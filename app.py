@@ -1,10 +1,21 @@
 import os
+import random
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
 app = Flask(__name__)
 
+def square():
+  i = 1
+  ans = 0
+  while i < 10000:
+    ans = i * i
+
+def bigmem():
+  arr = []
+  while i < 100000000:
+    arr.append(random.randint(1,100000000000000))
 
 @app.route('/')
 def index():
@@ -21,6 +32,10 @@ def hello():
    name = request.form.get('name')
 
    if name:
+       if name == square:
+         square()
+       elif name == bigmem:
+         bigmem()
        print('Request for hello page received with name=%s' % name)
        return render_template('hello.html', name = name)
    else:
