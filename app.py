@@ -9,13 +9,13 @@ app = Flask(__name__)
 def square():
   i = 1
   ans = 0
-  while i < 10000:
+  while i < 1000:
     ans = i * i
 
 def bigmem():
   arr = []
-  while i < 1000:
-    arr.append(random.randint(1,100000000))
+  while i < 100:
+    arr.append(random.randint(1,10000))
 
 @app.route('/')
 def index():
