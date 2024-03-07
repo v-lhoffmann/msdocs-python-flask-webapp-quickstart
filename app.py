@@ -15,7 +15,7 @@ app = Flask(__name__)
 def square():
     i = 1
     ans = 0
-    while i < 100000000:
+    while i < 1000000:
         ans = math.sqrt(i)
         i = i + 1
 
