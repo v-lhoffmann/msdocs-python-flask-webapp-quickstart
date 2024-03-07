@@ -1,4 +1,5 @@
 import os
+import random
 import math
 import cProfile
 import pstats
@@ -21,8 +22,9 @@ def square():
 
 def bigmem():
     bigarray = []
+    i = 1
     while i < 1000000:
-        bigarray.append(i)
+        bigarray.append(random.randint(1, 100000000))
         i = i + 1
 
 
