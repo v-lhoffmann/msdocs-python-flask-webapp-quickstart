@@ -1,5 +1,6 @@
 import os
 import random
+import math
 import cProfile
 import pstats
 import io
@@ -14,8 +15,8 @@ app = Flask(__name__)
 def square():
     i = 1
     ans = 0
-    while i < 1000000000:
-        ans = i * i
+    while i < 1000000:
+        ans = maht.sqrt(i)
         i = i + 1
 
 
