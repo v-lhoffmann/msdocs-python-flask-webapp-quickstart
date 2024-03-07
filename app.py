@@ -1,5 +1,7 @@
 import os
 import random
+import cProfile, pstats, io
+    from pstats import SortKey
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
@@ -18,9 +20,11 @@ def bigmem():
     arr.append(random.randint(1,10000))
 
 @app.route('/')
-def index():
-   print('Request for index page received')
-   return render_template('index.html')
+  def index():
+    print('Request for index page received')
+    return render_template('index.html')
+
+
 
 @app.route('/favicon.ico')
 def favicon():
@@ -33,7 +37,16 @@ def hello():
 
    if name:
        if name == "square":
+         pr = cProfile.Profile()
+         pr.enable()
          square()
+         pr.disable()
+         s = io.StringIO()
+         sortby = SortKey.CUMULATIVE
+         ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+         ps.dump_stats('output.txt')
+         ps.print_stats()
+         print(s.getvalue())
        elif name == "bigmem":
          bigmem()
        print('Request for hello page received with name=%s' % name)
