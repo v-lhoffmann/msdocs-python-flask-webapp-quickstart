@@ -53,7 +53,7 @@ def hello():
             s = io.StringIO()
             sortby = SortKey.CUMULATIVE
             ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-            ps.dump_stats('output.txt')
+            ps.dump_stats('square.txt')
             ps.print_stats()
             print(s.getvalue())
         elif name == "bigmem":
@@ -64,7 +64,7 @@ def hello():
             s = io.StringIO()
             sortby = SortKey.CUMULATIVE
             ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-            ps.dump_stats('output.txt')
+            ps.dump_stats('bigmem.txt')
             ps.print_stats()
             print(s.getvalue())
         print('Request for hello page received with name=%s' % name)
