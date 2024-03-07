@@ -1,5 +1,4 @@
 import os
-import random
 import math
 import cProfile
 import pstats
@@ -21,9 +20,9 @@ def square():
 
 
 def bigmem():
-    arr = []
-    while i < 1000:
-        arr.append(random.randint(1, 10000))
+    bigarray = []
+    while i < 1000000:
+        bigarray.append(i)
         i = i + 1
 
 
@@ -56,7 +55,16 @@ def hello():
             ps.print_stats()
             print(s.getvalue())
         elif name == "bigmem":
+            pr = cProfile.Profile()
+            pr.enable()
             bigmem()
+            pr.disable()
+            s = io.StringIO()
+            sortby = SortKey.CUMULATIVE
+            ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+            ps.dump_stats('output.txt')
+            ps.print_stats()
+            print(s.getvalue())
         print('Request for hello page received with name=%s' % name)
         return render_template('hello.html', name=name)
     else:
