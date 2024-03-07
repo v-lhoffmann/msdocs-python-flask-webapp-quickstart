@@ -15,14 +15,14 @@ app = Flask(__name__)
 def square():
     i = 1
     ans = 0
-    while i < 1000000:
-        ans = maht.sqrt(i)
+    while i < 100000:
+        ans = math.sqrt(i)
         i = i + 1
 
 
 def bigmem():
     arr = []
-    while i < 100000:
+    while i < 1000:
         arr.append(random.randint(1, 10000))
         i = i + 1
 
