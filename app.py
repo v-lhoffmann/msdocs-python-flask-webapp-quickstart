@@ -21,8 +21,9 @@ def square():
 
 def bigmem():
     arr = []
-    while i < 100:
+    while i < 100000:
         arr.append(random.randint(1, 10000))
+        i = i + 1
 
 
 @app.route('/')
