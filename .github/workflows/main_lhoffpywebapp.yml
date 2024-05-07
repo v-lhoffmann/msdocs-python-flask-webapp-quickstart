@@ -68,6 +68,13 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_214E2C6AD9A2410CB3F7EECAF2F4DA1C }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F096C158B3F94E1C95B6139454E29D33 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_828BF41C5C49409E9AD00CC1FF390F08 }}
+          
+      - name: Azure CLI script
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az webapp ssh --name lhoffpywebapp --resource-group lhofflinuxapps
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
